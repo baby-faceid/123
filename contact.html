@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -63,13 +63,52 @@
                   </div>
             </section>
             <!--資料收集及前處理-->
-            <section class="py-5" id="features">
+            <section class="py-5">
                 <div class="container px-5 my-5">
-                    <div class="row gx-5">
-                         <div class="d-flex justify-content-center"><h2 class="fw-bolder mb-0">資料收集及前處理</h2></div>
-                          
-                      </div>
-                  </div>
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder">一、 嬰兒臉部影像蒐集</h2>
+                            <h3 class="fw-normal">(一). 蒐集嬰兒哭鬧的臉部影像</h3>
+                                <li>1. 為了提高模型的學習效率，資料蒐集過程會涵蓋多種不同光線、角度和表情的影像，以增加模型的適應性</li>
+                            <ol>
+                                <h2 class="fw-bolder">二、 影像擷取</h2>
+                                <h3 class="fw-normal">(一).	使用Python進行嬰兒影片擷取處理，共18部影片，總時長達67小時19分34秒，最終擷取出36,245張圖片，每張像素為1920*1080</h3>
+                            </ol>
+                            <ol>
+                            <h2 class="fw-bolder">三、  資料標記與標準化</h2>
+                            <h3 class="fw-normal">(一).	針對影像數據進行標記</h3>
+                            <li>1.	利用Labelimg工具進行圖片標記，標註範圍為:眉心、嘴巴</li>
+                            <h3 class="fw-normal">(二).	影像數據標準化處理，確保輸入模型的一致性</h3>
+                            </ol>
+                            <h2 class="fw-bolder">四、  數據集劃分</h2>
+                            <h3 class="fw-normal">(一).	本研究依據常見的機器學習數據劃分原則，將數據集分為 訓練集（Training Set）、驗證集（Validation Set）、測試集（Test Set）三個部分，以確保模型的訓練、參數調整及性能評估的可靠性</h3>
+                            <h3 class="fw-normal">(二).	依照 (訓練集 + 驗證集) : 測試集 = 9 : 1 進行初步劃分，使測試集佔整體數據的 10%，其餘 90% 作為訓練與驗證使用。接著，在訓練與驗證數據中，依據訓練集 : 驗證集 = 9 : 1 的比例進行劃分，即訓練集佔 90%，驗證集佔 10%</h3>
+                            <ol>
+                                <li>1.	最終數據集的分配如下：
+                                    訓練集（Training Set）：81%（共 1598 筆數據）
+                                    驗證集（Validation Set）：9%（共 178 筆數據）
+                                    測試集（Test Set）：10%（共 198 筆數據）
+                                </li>
+                            </ol>
+                            <h2 class="fw-bolder">五、  預測模型(YOLOv7)訓練</h2>
+                            <h3 class="fw-normal">(一).	初始學習率與優化器設定</h3>
+                            <ol>
+                                <li>1.	初始學習率設定為0.0005，並且設有最小學習率，為初始學習率的1%。這樣設置有助於在訓練過程中逐步降低學習率，提升模型的穩定性與收斂效率</li>
+                                <li>2.	優化器選用Adam，並設定動量為0.937。Adam優化器能有效地處理稀疏梯度問題，並提高訓練速度與精度</li>
+                            </ol>
+                            <h3 class="fw-normal">(二).	參數凍結與解凍設置</h3>
+                             <ol>
+                                <li>1.	凍結階段：從第0 Epoch至第50 Epoch，凍結模型中的部分參數，批次大小設定為16。這一階段主要用於調整基本特徵學習，避免訓練初期過度調整權重</li>
+                                <li>2.	解凍階段：從第50 Epoch至第150 Epoch，解凍模型中的訓練參數，批次大小設定為8。這一階段允許模型進行更細緻的調整與優化，以適應複雜的數據特徵</li>
+                            </ol>
+                             <h3 class="fw-normal">(三).  訓練設置</h3>
+                             <ol>
+                                <li>1.	訓練過程中未設置權重衰減，以避免對模型的影響過大，並確保權重不會過快地衰減，從而影響到學習的效果</li>
+                               
+                        </div>
+                    </div>
+                </div>
             </section>
             <!--電路圖-->
              <section class="py-5" id="features">

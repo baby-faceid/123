@@ -80,61 +80,66 @@
 
 
             <!--資料收集及前處理-->
-           <section class="py-5" style="font-family: 'DFKai-SB'; font-size: 0.9rem;">
-            <div class="container px-5 my-5">
-                <div class="row gx-5">
-                    <div class="col-lg-12">
-                        <div class="d-flex justify-content-center"><h2 class="fw-bolder mb-0">資料收集與前處理</h2></div>
-                        <h3 class="fw-bolder" style="font-size: 1.25rem;">一、嬰兒臉部影像蒐集</h3>
-                        <h4 class="fw-normal" style="font-size: 1.1rem;">(一) 蒐集嬰兒哭鬧的臉部影像</h4>
-                        <ul>
-                            <li>為了提高模型的學習效率，資料蒐集過程會涵蓋多種不同光線、角度和表情的影像，以增加模型的適應性。</li>
-                        </ul>
-        
-                        <h3 class="fw-bolder mt-4" style="font-size: 1.25rem;">二、影像擷取</h3>
-                        <h4 class="fw-normal" style="font-size: 1.1rem;">(一) 使用 Python 進行嬰兒影片擷取處理</h4>
-                        <p>共 18 部影片，總時長達 67 小時 19 分 34 秒，最終擷取出 36,245 張圖片，每張像素為 1920×1080。</p>
-        
-                        <h3 class="fw-bolder mt-4" style="font-size: 1.25rem;">三、資料標記與標準化</h3>
-                        <h4 class="fw-normal" style="font-size: 1.1rem;">(一) 針對影像數據進行標記</h4>
-                        <ul>
-                            <li>利用 Labelimg 工具進行圖片標記，標註範圍為：眉心、嘴巴。</li>
-                        </ul>
-                        <h4 class="fw-normal" style="font-size: 1.1rem;">(二) 影像數據標準化處理</h4>
-                        <p>確保輸入模型的一致性。</p>
-        
-                        <h3 class="fw-bolder mt-4" style="font-size: 1.25rem;">四、數據集劃分</h3>
-                        <h4 class="fw-normal" style="font-size: 1.1rem;">(一)</h4>
-                        <p>本研究依據常見的機器學習數據劃分原則，將數據集分為訓練集（Training Set）、驗證集（Validation Set）、測試集（Test Set）三個部分，以確保模型的訓練、參數調整及性能評估的可靠性。</p>
-                        <h4 class="fw-normal" style="font-size: 1.1rem;">(二)</h4>
-                        <p>依照 (訓練集 + 驗證集) : 測試集 = 9 : 1 進行初步劃分，使測試集佔整體數據的 10%，其餘 90% 作為訓練與驗證使用。接著，在訓練與驗證數據中，依據訓練集 : 驗證集 = 9 : 1 的比例進行劃分，即訓練集佔 90%，驗證集佔 10%。</p>
-                        <ul>
-                            <li>訓練集（Training Set）：81%（共 1598 筆數據）</li>
-                            <li>驗證集（Validation Set）：9%（共 178 筆數據）</li>
-                            <li>測試集（Test Set）：10%（共 198 筆數據）</li>
-                        </ul>
-        
-                        <h3 class="fw-bolder mt-4" style="font-size: 1.25rem;">五、預測模型（YOLOv7）訓練</h3>
-                        <h4 class="fw-normal" style="font-size: 1.1rem;">(一) 初始學習率與優化器設定</h4>
-                        <ul>
-                            <li>初始學習率設定為 0.0005，並設有最小學習率，為初始學習率的 1%。這樣設置有助於在訓練過程中逐步降低學習率，提升模型的穩定性與收斂效率。</li>
-                            <li>優化器選用 Adam，並設定動量為 0.937。Adam 優化器能有效地處理稀疏梯度問題，並提高訓練速度與精度。</li>
-                        </ul>
-        
-                        <h4 class="fw-normal" style="font-size: 1.1rem;">(二) 參數凍結與解凍設置</h4>
-                        <ul>
-                            <li>凍結階段：從第 0 Epoch 至第 50 Epoch，凍結模型中的部分參數，批次大小設定為 16。這一階段主要用於調整基本特徵學習，避免訓練初期過度調整權重。</li>
-                            <li>解凍階段：從第 50 Epoch 至第 150 Epoch，解凍模型中的訓練參數，批次大小設定為 8。這一階段允許模型進行更細緻的調整與優化，以適應複雜的數據特徵。</li>
-                        </ul>
-        
-                        <h4 class="fw-normal" style="font-size: 1.1rem;">(三) 訓練設置</h4>
-                        <ul>
-                            <li>訓練過程中未設置權重衰減，以避免對模型的影響過大，並確保權重不會過快地衰減，從而影響到學習的效果。</li>
-                        </ul>
-                    </div>
+           <section class="py-5 bg-light">
+              <div class="container px-5">
+                <h2 class="fw-bold mb-4 text-center">資料收集與前處理</h2>
+            
+                <!-- 一、嬰兒臉部影像蒐集 -->
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">一、嬰兒臉部影像蒐集</h5>
+                    <p class="card-text mb-1">我們蒐集多種不同光線、角度與表情的嬰兒哭鬧影像，目的是提高模型的泛化能力與學習效率。</p>
+                  </div>
                 </div>
-            </div>
-</section>
+            
+                <!-- 二、影像擷取 -->
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">二、影像擷取</h5>
+                    <p class="card-text">使用 Python 擷取 18 部影片（總長 67 小時 19 分 34 秒），最終取得 36,245 張圖片，解析度為 1920×1080。</p>
+                  </div>
+                </div>
+            
+                <!-- 三、資料標記與標準化 -->
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">三、資料標記與標準化</h5>
+                    <ul>
+                      <li>使用 <strong>Labelimg 工具</strong> 標註眉心與嘴巴。</li>
+                      <li>對影像進行標準化，確保輸入模型時格式一致。</li>
+                    </ul>
+                  </div>
+                </div>
+            
+                <!-- 四、數據集劃分 -->
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">四、數據集劃分</h5>
+                    <p class="mb-1">依照訓練、驗證與測試集的慣用比例，進行分配：</p>
+                    <ul>
+                      <li>訓練集：<strong>81%</strong>（共 1598 筆）</li>
+                      <li>驗證集：<strong>9%</strong>（共 178 筆）</li>
+                      <li>測試集：<strong>10%</strong>（共 198 筆）</li>
+                    </ul>
+                  </div>
+                </div>
+            
+                <!-- 五、模型訓練 -->
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">五、預測模型（YOLOv7）訓練</h5>
+                    <ul>
+                      <li><strong>學習率與優化器：</strong>初始學習率設為 0.0005，最小學習率為其 1%，使用 Adam 優化器（動量 0.937）。</li>
+                      <li><strong>凍結階段：</strong>Epoch 0–50，凍結部分權重，Batch size 為 16。</li>
+                      <li><strong>解凍階段：</strong>Epoch 50–150，全面訓練，Batch size 為 8。</li>
+                      <li><strong>訓練設置：</strong>未使用權重衰減，確保模型能有效學習。</li>
+                    </ul>
+                  </div>
+                </div>
+            
+              </div>
+            </section>
+
             <!--硬體設備圖-->
             <section class="py-5" id="features">
                 <div class="container px-5 my-5">

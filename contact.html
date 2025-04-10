@@ -114,9 +114,9 @@
                     <h5 class="card-title fw-bold">五、預測模型（YOLOv7）訓練</h5>
                     <ul>
                       <li><strong>學習率與優化器：</strong>初始學習率設為 0.0005，最小學習率為其 1%，使用 Adam 優化器（動量 0.937）。</li>
-                      <li><strong>凍結階段：</strong>Epoch 0–50，凍結部分權重，Batch size 為 16。</li>
-                      <li><strong>解凍階段：</strong>Epoch 50–150，全面訓練，Batch size 為 8。</li>
-                      <li><strong>訓練設置：</strong>未使用權重衰減，確保模型能有效學習。</li>
+                      <li><strong>凍結階段：</strong>Epoch 0–70，凍結部分權重，Batch size 為 8。</li>
+                      <li><strong>解凍階段：</strong>Epoch 70–350，全面訓練，Batch size 為 4。</li>
+                      <li><strong>訓練設置：</strong>權重衰減設為0.0001，防止模型過度擬合訓練資料。</li>
                     </ul>
                   </div>
                 </div>

@@ -200,51 +200,20 @@
                 <div class="card mb-4 shadow-sm">
                   <div class="card-body">
                     <h5 class="card-title fw-bold">一、硬體初始化</h5>
-                    <p class="card-text mb-1">我們蒐集多種不同光線、角度與表情的嬰兒哭鬧影像，目的是提高模型的泛化能力與學習效率。</p>
-                  </div>
-                </div>
-            
-                <!-- 二、影像擷取 -->
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body">
-                    <h5 class="card-title fw-bold">二、影像擷取</h5>
-                    <p class="card-text">使用 Python 擷取 18 部影片（總長 67 小時 19 分 34 秒），最終取得 36,245 張圖片，解析度為 1920×1080。</p>
-                  </div>
-                </div>
-            
-                <!-- 三、資料標記與標準化 -->
-                <div class="card mb-4 shadow-sm">
-                  <div class="card-body">
-                    <h5 class="card-title fw-bold">三、資料標記與標準化</h5>
                     <ul>
-                      <li>使用 <strong>Labelimg 工具</strong> 標註眉心與嘴巴。</li>
-                      <li>對影像進行標準化，確保輸入模型時格式一致。</li>
+                      <li>使用 <strong>Wire.h 套件</strong>初始化 I2C LCD</li>
+                      <li>使用 <strong>MFRC522 套件</strong>設定 RFID 讀卡模組</li>
                     </ul>
                   </div>
                 </div>
             
-                <!-- 四、數據集劃分 -->
+                <!-- 二、讀取卡片序號 -->
                 <div class="card mb-4 shadow-sm">
                   <div class="card-body">
-                    <h5 class="card-title fw-bold">四、數據集劃分</h5>
-                    <p class="mb-1">依照訓練、驗證與測試集的慣用比例，進行分配：</p>
-                    <ul>
-                      <li>訓練集：<strong>81%</strong>（共 1598 筆）</li>
-                      <li>驗證集：<strong>9%</strong>（共 178 筆）</li>
-                      <li>測試集：<strong>10%</strong>（共 198 筆）</li>
-                    </ul>
-                  </div>
-                </div>
-            
-                <!-- 五、模型訓練 -->
-                <div class="card shadow-sm">
-                  <div class="card-body">
-                    <h5 class="card-title fw-bold">五、預測模型（YOLOv7）訓練</h5>
-                    <ul>
-                      <li><strong>學習率與優化器：</strong>初始學習率設為 0.0005，最小學習率為其 1%，使用 Adam 優化器（動量 0.937）。</li>
-                      <li><strong>凍結階段：</strong>Epoch 0–70，凍結部分權重，Batch size 為 8。</li>
-                      <li><strong>解凍階段：</strong>Epoch 70–350，全面訓練，Batch size 為 4。</li>
-                      <li><strong>訓練設置：</strong>權重衰減設為0.0001，防止模型過度擬合訓練資料。</li>
+                    <h5 class="card-title fw-bold">二、讀取卡片序號</h5>
+                    ul>
+                      <li>卡片感應時系統偵測讀取 UID</li>
+                      <li>UID顯示在LCD</li>
                     </ul>
                   </div>
                 </div>

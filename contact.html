@@ -220,6 +220,59 @@
             
               </div>
             </section>
+
+            <!--RFID監測系統之程式設計－身份辨識-->
+           <section class="py-5 bg-light">
+              <div class="container px-5">
+                <h2 class="fw-bold mb-4 text-center">RFID監測系統之程式設計－身份辨識</h2>
+            
+                <!-- 一、卡片感應與 UID 讀取 -->
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">一、卡片感應與 UID 讀取</h5>
+                    <ul>
+                      <li>感應 RFID 卡時，自動讀取卡片 UID</li>
+                      <li>將 UID 資訊顯示於 Serial Monitor</li>
+                    </ul>
+                  </div>
+                </div>
+            
+                <!-- 二、身份比對 -->
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">二、身份比對</h5>
+                    <ul>
+                      <li>UID 與 authorizedUID[] 陣列比對</li>
+                      <li>比對成功 → 授權通過</li>
+                      <li>比對失敗 → 顯示錯誤提示</li>
+                    </ul>
+                  </div>
+                </div>
+            
+                <!-- 三、驗證結果顯示 -->
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">三、驗證結果顯示</h5>
+                    <ul>
+                      <li>成功 ➜ LCD 顯示 <strong>「Success」</strong> </li>
+                      <li>失敗 ➜ LCD 顯示<strong>「Wrong identity」</strong> </li>
+                    </ul>
+                  </div>
+                </div>
+            
+                <!-- 四、自動刷新與待機 -->
+                <div class="card mb-4 shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">四、自動刷新與待機</h5>
+                    <ul>
+                      <li>顯示 2 秒後 LCD 清除</li>
+                      <li>系統回到待機狀態，以便下次感應操作</li>
+                    </ul>
+                  </div>
+                </div>
+            
+              </div>
+            </section>
             <!-- Page content-->
             <section class="py-5">
                 <div class="container px-5">
